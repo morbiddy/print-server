@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Print PDF</title>
+</head>
+<body>
+    <h1>Upload a PDF to Print</h1>
+    <input type="file" id="pdfFile" accept="application/pdf">
+    <button onclick="uploadAndPrint()">Print</button>
+    <p id="status"></p>
+
+    <script>
+        async function uploadAndPrint() {
+            const fileInput = document.querySelector("#pdfFile");
+            const status = document.querySelector("#status");
+
+            if (!fileInput.files.length) {
+                status.textContent = "Please select a PDF file.";
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", fileInput.files[0]);
+
+            try {
+                const response = await fetch("http://localhost:5000/print", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const result = await response.text();
+                status.textContent = result;
+            } catch (error) {
+                status.textContent = "Error: " + error;
+            }
+        }
+    </script>
+</body>
+</html>
