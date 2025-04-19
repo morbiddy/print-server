@@ -1,8 +1,8 @@
 # Ignore all files
 node_modules/
+dist/
+bin/
 
-print-server-macos
-print-server-win.exe
 
 # Except this .gitignore file
 !.gitignore
