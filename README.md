@@ -1,16 +1,13 @@
 
 
-1. Install pkg
-npm install -g pkg
-
-2. Build the Executable
-pkg server.js --targets node18-win-x64,node18-macos-x64 --output print-server
+1. Run
+npm run pkg
 
 This will generate:
-print-server-win.exe (Windows)
-print-server-macos (macOS)
+/dist/print-server-win.exe (Windows)
+/dist/print-server-macos (macOS)
 
-3. Run the Executable
+2. Run the Executable
 On Windows: print-server-win.exe
 On macOS: ./print-server-macos
 
